@@ -3,24 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jurnal SMP IT Al Mubarok</title>
-  <link rel="icon" id="appIcon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D3A6E'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3EJD%3C/text%3E%3C/svg%3E">
+  <title>Jurnal Digital - SMPI Yambu'ul Qur'an</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0A1B33; --ink-2:#13294A; --ink-3:#1E3A66;
-    --teal:#1D3A6E; --teal-dark:#14294F; --teal-soft:#E6EBF4;
-    --marigold:#E09B2D; --marigold-soft:#FBF0DC;
-    --violet:#6D6AC9; --violet-soft:#ECEBF8;
-    --clay:#C2453C; --clay-soft:#FBE8E6;
-    --canvas:#F2F4F8; --surface:#ffffff; --line:#E2E7EF; --line-soft:#EDF1F6;
-    --text:#141C2B; --muted:#6B7685; --muted-2:#98A2B0;
+    --ink:#062116; --ink-2:#0b3323; --ink-3:#124430;
+    --teal:#0b3323; --teal-dark:#062116; --teal-soft:#eaf3ed;
+    --marigold:#dfb342; --marigold-soft:#fef7e6;
+    --violet:#0f5132; --violet-soft:#e6f4ea;
+    --clay:#c2453c; --clay-soft:#fbe8e6;
+    --canvas:#f8fafc; --surface:#ffffff; --line:#e2e8f0; --line-soft:#edf2f7;
+    --text:#062116; --muted:#52606d; --muted-2:#829ab1;
     --r-sm:10px; --r-md:14px; --r-lg:20px;
-    --sh-1:0 1px 2px rgba(10,27,51,.05);
-    --sh-2:0 12px 32px -18px rgba(10,27,51,.45);
-    --sh-3:0 28px 60px -28px rgba(10,27,51,.55);
+    --sh-1:0 1px 2px rgba(6,33,22,.05);
+    --sh-2:0 12px 32px -18px rgba(6,33,22,.45);
+    --sh-3:0 28px 60px -28px rgba(6,33,22,.55);
   }
   *{box-sizing:border-box;}
   html,body{height:100%;}
@@ -40,15 +41,15 @@
     position:relative;overflow:hidden;
     min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
     background:
-      radial-gradient(1100px 640px at 10% -8%, rgba(224,155,45,.55), transparent 55%),
-      radial-gradient(900px 620px at 102% 6%, rgba(109,106,201,.55), transparent 55%),
-      radial-gradient(1000px 680px at 46% 118%, rgba(194,69,60,.40), transparent 55%),
-      linear-gradient(160deg,#0A1B33 0%,#15305C 48%,#081326 100%);
+      radial-gradient(1100px 640px at 10% -8%, rgba(223,179,66,.35), transparent 55%),
+      radial-gradient(900px 620px at 102% 6%, rgba(11,51,35,.55), transparent 55%),
+      radial-gradient(1000px 680px at 46% 118%, rgba(6,33,22,.85), transparent 55%),
+      linear-gradient(160deg,#062116 0%,#0b3323 48%,#04170f 100%);
   }
   .login-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
   .login-orb-1{width:360px;height:360px;background:var(--marigold);opacity:.35;top:-110px;left:-110px;}
   .login-orb-2{width:320px;height:320px;background:var(--violet);opacity:.35;bottom:-120px;right:-70px;}
-  .login-orb-3{width:240px;height:240px;background:var(--clay);opacity:.22;top:58%;right:10%;}
+  .login-orb-3{width:240px;height:240px;background:var(--marigold);opacity:.18;top:58%;right:10%;}
   .login-card{
     position:relative;z-index:1;overflow:hidden;
     background:var(--surface);padding:38px 32px 30px;border-radius:var(--r-lg);
@@ -56,16 +57,17 @@
   }
   .login-card::before{
     content:'';position:absolute;top:0;left:0;right:0;height:6px;
-    background:linear-gradient(90deg,var(--teal),var(--violet),var(--marigold),var(--clay));
+    background:linear-gradient(90deg, #0b3323, #dfb342, #062116);
   }
   .login-card form{text-align:left;}
   .login-mark{
-    width:60px;height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center;
-    background:conic-gradient(from 220deg,var(--teal),var(--violet),var(--marigold),var(--teal));
-    color:#fff;font-size:26px;font-weight:800;
-    margin:0 auto 18px;box-shadow:0 12px 24px -12px rgba(29,58,110,.9);overflow:hidden;
+    width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#062116 0%,#0b3323 100%);
+    border:1.5px solid #dfb342;
+    box-shadow:0 4px 16px rgba(6,33,22,.3);
+    margin:0 auto 16px;overflow:hidden;
   }
-  .login-mark img{width:100%;height:100%;object-fit:cover;}
+  .login-mark img{width:52px;height:52px;object-fit:contain;}
   .login-card h1{font-size:25px;line-height:1.2;}
   .login-sub{color:var(--muted);margin:6px 0 8px;font-size:14.5px;}
   .login-card label{display:block;font-size:13.5px;color:var(--muted);margin:14px 0 6px;font-weight:600;}
@@ -216,7 +218,8 @@
   .app-wrap{display:flex;height:100vh;overflow:hidden;}
   .sidebar{
     width:256px;flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto;
-    background:linear-gradient(180deg,#0A1B33 0%,#10264A 60%,#081A33 100%);
+    background:linear-gradient(180deg,#062116 0%,#0b3323 60%,#04170f 100%);
+    border-right:1px solid rgba(223,179,66,.2);
     color:#D6DEEA;transition:width .22s ease;scrollbar-width:thin;
   }
   .sidebar::-webkit-scrollbar{width:6px;}
@@ -605,12 +608,13 @@
   .dash-hero{
     position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;
     gap:20px;flex-wrap:wrap;margin-bottom:20px;padding:28px 30px;border-radius:24px;color:#fff;
-    background:linear-gradient(125deg,#0A1B33 0%,#1D3A6E 55%,#3B4FA8 100%);
-    box-shadow:0 26px 48px -30px rgba(10,27,51,.8);
+    background:linear-gradient(125deg,#062116 0%,#0b3323 55%,#124430 100%);
+    border:1px solid rgba(223,179,66,.25);
+    box-shadow:0 26px 48px -30px rgba(6,33,22,.8);
   }
   .dash-hero::before,.dash-hero::after{content:'';position:absolute;border-radius:50%;pointer-events:none;filter:blur(8px);}
-  .dash-hero::before{width:260px;height:260px;right:-60px;top:-110px;background:radial-gradient(circle,rgba(224,155,45,.55),transparent 68%);}
-  .dash-hero::after{width:300px;height:300px;right:22%;bottom:-190px;background:radial-gradient(circle,rgba(109,106,201,.6),transparent 68%);}
+  .dash-hero::before{width:260px;height:260px;right:-60px;top:-110px;background:radial-gradient(circle,rgba(223,179,66,.45),transparent 68%);}
+  .dash-hero::after{width:300px;height:300px;right:22%;bottom:-190px;background:radial-gradient(circle,rgba(11,51,35,.6),transparent 68%);}
   .dash-hero > *{position:relative;z-index:1;}
   .dash-date{margin:0 0 6px;font-size:13.5px;font-weight:600;color:#B9C6DB;}
   .dash-greet{font-size:clamp(22px,3.2vw,30px);line-height:1.2;font-weight:800;letter-spacing:-.03em;}
@@ -679,17 +683,17 @@
   .splash{
     position:fixed;inset:0;z-index:6000;display:flex;align-items:center;justify-content:center;overflow:hidden;
     background:
-      radial-gradient(900px 560px at 12% -10%, rgba(224,155,45,.5), transparent 58%),
-      radial-gradient(800px 560px at 100% 8%, rgba(109,106,201,.5), transparent 58%),
-      linear-gradient(160deg,#0A1B33 0%,#15305C 50%,#081326 100%);
+      radial-gradient(900px 560px at 12% -10%, rgba(223,179,66,.35), transparent 58%),
+      radial-gradient(800px 560px at 100% 8%, rgba(11,51,35,.55), transparent 58%),
+      linear-gradient(160deg,#062116 0%,#0b3323 50%,#04170f 100%);
     color:#fff;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s ease,visibility .5s;
   }
   .splash.show{opacity:1;visibility:visible;pointer-events:auto;}
   .splash.show.hide{opacity:0;pointer-events:none;}
   .splash-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;animation:sp-float 7s ease-in-out infinite;}
-  .so1{width:300px;height:300px;background:#E09B2D;opacity:.28;top:-90px;left:-80px;}
-  .so2{width:280px;height:280px;background:#6D6AC9;opacity:.3;bottom:-100px;right:-60px;animation-delay:-3s;}
-  .so3{width:200px;height:200px;background:#C2453C;opacity:.18;top:55%;left:58%;animation-delay:-5s;}
+  .so1{width:300px;height:300px;background:#dfb342;opacity:.28;top:-90px;left:-80px;}
+  .so2{width:280px;height:280px;background:#0b3323;opacity:.35;bottom:-100px;right:-60px;animation-delay:-3s;}
+  .so3{width:200px;height:200px;background:#dfb342;opacity:.18;top:55%;left:58%;animation-delay:-5s;}
   @keyframes sp-float{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-22px);}}
   .splash-center{position:relative;z-index:1;text-align:center;padding:24px;max-width:90vw;}
   .splash-logo{position:relative;width:112px;height:112px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;}
@@ -818,9 +822,9 @@
     </section>
 
     <div class="login-card">
-      <div class="login-mark" id="loginMark"><span id="loginMarkText">JD</span></div>
+      <div class="login-mark" id="loginMark"><img src="logo.png" alt="Logo SMPI Yambu'ul Qur'an"></div>
       <h1>Jurnal Digital</h1>
-      <p class="login-sub" id="loginSchoolName">Catat kegiatan harian sekolah dalam satu tempat.</p>
+      <p class="login-sub" id="loginSchoolName">SMPI Yambu'ul Qur'an &bull; Pesantren Modern</p>
 
       <div class="login-actions">
         <button type="button" class="btn-launch btn-launch-primary" id="btnOpenLogin">
@@ -848,7 +852,7 @@
 
     </div><!-- /.login-inner -->
 
-    <footer class="login-footer">Copyright &copy; 2026 - SMP Islam Terpadu Al Mubarok</footer>
+    <footer class="login-footer">Copyright &copy; 2026 - SMPI Yambu'ul Qur'an &bull; Pesantren Modern Kediri</footer>
   </div>
 
   <!-- Form login asli disembunyikan di sini, dipindahkan ke dalam kotak dialog
@@ -906,7 +910,7 @@
         </div>
       </header>
       <main class="content" id="content"></main>
-      <footer class="app-footer">Copyright &copy; 2026 - SMP Islam Terpadu Al Mubarok</footer>
+      <footer class="app-footer">Copyright &copy; 2026 - SMPI Yambu'ul Qur'an &bull; Pesantren Modern Kediri</footer>
     </div>
     <nav class="bottom-nav" id="bottomNav"></nav>
   </div>
@@ -951,7 +955,7 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbx4FbmGTdpnkpQneafqg1Hl
 // ===== JUDUL TAB & FAVICON =====
 // Judul bawaan; setelah setting dimuat otomatis menjadi "Jurnal Digital - <nama sekolah>".
 const APP_NAME = 'Jurnal Digital';
-let HEAD_BASE = APP_NAME;
+let HEAD_BASE = APP_NAME + " - SMPI Yambu'ul Qur'an";
 let SESSION_TOKEN = '';     // token sesi dari server (dibuat saat login)
 let EKSTRA_TOKEN = '';      // token form jurnal ekstra (halaman login, tanpa akun)
 
@@ -1716,8 +1720,8 @@ tryRestoreSession();
 function judulHalaman_(label) { document.title = (label ? label + ' | ' : '') + HEAD_BASE; }
 function applyHead_(s) {
   s = s || {};
-  const sekolah = s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? String(s.nama_sekolah) : '';
-  HEAD_BASE = APP_NAME + (sekolah ? ' - ' + sekolah : '');
+  const sekolah = s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? String(s.nama_sekolah) : "SMPI Yambu'ul Qur'an";
+  HEAD_BASE = APP_NAME + ' - ' + sekolah;
   const cur = (MENU_CONFIG.find(function (m) { return m.key === getPageState_(); }) || {}).label;
   judulHalaman_(CURRENT_USER ? cur : '');
   if (s.logo_url) { const ic = document.getElementById('appIcon'); if (ic) ic.href = imgUrl(s.logo_url); }
@@ -1725,7 +1729,7 @@ function applyHead_(s) {
 /** Terapkan nama sekolah, tahun ajaran & logo ke sidebar (desktop) dan header mobile sekaligus. */
 function applyBranding(s) {
   applyHead_(s);
-  const nama = s.nama_sekolah;
+  const nama = s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? s.nama_sekolah : "SMPI Yambu'ul Qur'an";
   const tahunTxt = (s.tahun_ajaran || '-') + ' \u00B7 ' + (s.semester || '-');
   if (nama) {
     $('#sidebarSchoolName').firstChild.nodeValue = nama;
