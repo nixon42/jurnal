@@ -1406,17 +1406,18 @@ function splashEl_() { return document.getElementById('splash'); }
 function splashLogo_(url) {
   const img = document.getElementById('splashLogoImg'), mark = document.getElementById('splashBook');
   if (!img || !mark) return;
-  if (url) {
-    img.onload = function () { img.style.display = 'block'; mark.style.display = 'none'; };
-    img.onerror = function () { img.style.display = 'none'; mark.style.display = ''; };
-    img.src = imgUrl(url);
-  } else { img.style.display = 'none'; mark.style.display = ''; }
+  img.onload = function () { img.style.display = 'block'; mark.style.display = 'none'; };
+  img.onerror = function () { img.style.display = 'none'; mark.style.display = ''; };
+  img.src = 'logo.png';
 }
 function splashBrand_(s) {
   const el0 = splashEl_();
   if (!el0 || el0.classList.contains('welcome')) return;
-  splashLogo_(s && s.logo_url);
-  const nama = s && s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? s.nama_sekolah : '';
+  splashLogo_('logo.png');
+  let nama = s && s.nama_sekolah;
+  if (!nama || nama.indexOf('Mubarok') !== -1 || nama === 'Nama Sekolah') {
+    nama = "SMPI Yambu'ul Qur'an";
+  }
   if (nama) document.getElementById('splashSub').textContent = nama;
 }
 function splashShow_(title, sub, needs, welcome) {
@@ -1677,12 +1678,18 @@ $('#backdrop').addEventListener('click', function () {
 });
 
 call('getPublicSettings').then(function (s) {
-  SETTINGS = s || {};
+  s = s || {};
+  // Override & Sanitasi: pastikan nama sekolah dan logo selalu SMPI Yambu'ul Qur'an
+  if (!s.nama_sekolah || s.nama_sekolah.indexOf('Mubarok') !== -1 || s.nama_sekolah === 'Nama Sekolah') {
+    s.nama_sekolah = "SMPI Yambu'ul Qur'an";
+  }
+  s.logo_url = 'logo.png';
+  SETTINGS = s;
   applyHead_(SETTINGS);
-  if (s.nama_sekolah) $('#loginSchoolName').textContent = s.nama_sekolah;
-  if (s.logo_url) {
-    $('#loginMark').innerHTML = '';
-    $('#loginMark').appendChild(el('img', { src: imgUrl(s.logo_url), alt: '' }));
+  $('#loginSchoolName').textContent = "SMPI Yambu'ul Qur'an \u2022 Pesantren Modern";
+  const lm = $('#loginMark');
+  if (lm) {
+    lm.innerHTML = '<img src="logo.png" alt="Logo SMPI Yambu\'ul Qur\'an">';
   }
   // Jika sesi sudah dipulihkan lebih dulu (lihat tryRestoreSession di bawah)
   // sebelum setting ini selesai dimuat, perbarui logo/nama sekolahnya sekarang.
@@ -1720,29 +1727,43 @@ tryRestoreSession();
 function judulHalaman_(label) { document.title = (label ? label + ' | ' : '') + HEAD_BASE; }
 function applyHead_(s) {
   s = s || {};
-  const sekolah = s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? String(s.nama_sekolah) : "SMPI Yambu'ul Qur'an";
+  let sekolah = s.nama_sekolah;
+  if (!sekolah || sekolah.indexOf('Mubarok') !== -1 || sekolah === 'Nama Sekolah') {
+    sekolah = "SMPI Yambu'ul Qur'an";
+  }
   HEAD_BASE = APP_NAME + ' - ' + sekolah;
   const cur = (MENU_CONFIG.find(function (m) { return m.key === getPageState_(); }) || {}).label;
   judulHalaman_(CURRENT_USER ? cur : '');
-  if (s.logo_url) { const ic = document.getElementById('appIcon'); if (ic) ic.href = imgUrl(s.logo_url); }
+  const ic = document.getElementById('appIcon');
+  if (ic) ic.href = 'logo.png';
 }
 /** Terapkan nama sekolah, tahun ajaran & logo ke sidebar (desktop) dan header mobile sekaligus. */
 function applyBranding(s) {
   applyHead_(s);
-  const nama = s.nama_sekolah && s.nama_sekolah !== 'Nama Sekolah' ? s.nama_sekolah : "SMPI Yambu'ul Qur'an";
+  s = s || {};
+  let nama = s.nama_sekolah;
+  if (!nama || nama.indexOf('Mubarok') !== -1 || nama === 'Nama Sekolah') {
+    nama = "SMPI Yambu'ul Qur'an";
+  }
   const tahunTxt = (s.tahun_ajaran || '-') + ' \u00B7 ' + (s.semester || '-');
-  if (nama) {
+  if ($('#sidebarSchoolName') && $('#sidebarSchoolName').firstChild) {
     $('#sidebarSchoolName').firstChild.nodeValue = nama;
+  }
+  if ($('#mobileSchoolName') && $('#mobileSchoolName').firstChild) {
     $('#mobileSchoolName').firstChild.nodeValue = nama;
   }
   $('#sidebarTahun').textContent = tahunTxt;
   $('#mobileTahun').textContent = tahunTxt;
-  if (s.logo_url) {
-    $('#sidebarMark').style.display = 'none';
-    $('#sidebarLogo').src = imgUrl(s.logo_url);
+
+  // Pastikan logo sidebar dan header mobile selalu menggunakan logo.png resmi SMPI Yambu'ul Qur'an
+  if ($('#sidebarMark')) $('#sidebarMark').style.display = 'none';
+  if ($('#sidebarLogo')) {
+    $('#sidebarLogo').src = 'logo.png';
     $('#sidebarLogo').style.display = 'block';
-    $('#mobileMark').style.display = 'none';
-    $('#mobileLogo').src = imgUrl(s.logo_url);
+  }
+  if ($('#mobileMark')) $('#mobileMark').style.display = 'none';
+  if ($('#mobileLogo')) {
+    $('#mobileLogo').src = 'logo.png';
     $('#mobileLogo').style.display = 'block';
   }
 }
